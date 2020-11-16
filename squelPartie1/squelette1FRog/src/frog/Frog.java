@@ -31,6 +31,8 @@ public class Frog implements IFrog {
 
 	@Override
 	public void move(Direction key) {
-
+		if(key == Direction.up){
+		
+		}	
 	}
 }
