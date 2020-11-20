@@ -2,7 +2,7 @@ package environment;
 
 import java.util.ArrayList;
 
-import gameCommons.Case;
+import util.Case;
 import gameCommons.Game;
 import gameCommons.IEnvironment;
 
