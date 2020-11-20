@@ -70,6 +70,15 @@ public class Game {
 	 */
 	public boolean testLose() {
 		// TODO
+
+		// Si à cette case la grenouille n'est pas en sécurité, cad qu'il percute une voiture,
+		// alors la partie est perdue.
+
+		if(!environment.isSafe(frog.getPosition())){
+			graphic.endGameScreen("You lose !");
+			return true;
+		}
+
 		return false;
 	}
 
