@@ -16,23 +16,17 @@ public class Game {
 	public final int minSpeedInTimerLoops;
 	public final double defaultDensity;
 
-	// Lien aux objets utilisés
+	// Lien aux objets utilisï¿½s
 	private IEnvironment environment;
 	private IFrog frog;
 	private IFroggerGraphics graphic;
 
 	/**
-	 * 
-	 * @param graphic
-	 *            l'interface graphique
-	 * @param width
-	 *            largeur en cases
-	 * @param height
-	 *            hauteur en cases
-	 * @param minSpeedInTimerLoop
-	 *            Vitesse minimale, en nombre de tour de timer avant déplacement
-	 * @param defaultDensity
-	 *            densite de voiture utilisee par defaut pour les routes
+	 * @param graphic             l'interface graphique
+	 * @param width               largeur en cases
+	 * @param height              hauteur en cases
+	 * @param minSpeedInTimerLoop Vitesse minimale, en nombre de tour de timer avant dï¿½placement
+	 * @param defaultDensity      densite de voiture utilisee par defaut pour les routes
 	 */
 	public Game(IFroggerGraphics graphic, int width, int height, int minSpeedInTimerLoop, double defaultDensity) {
 		super();
@@ -44,8 +38,8 @@ public class Game {
 	}
 
 	/**
-	 * Lie l'objet frog à la partie
-	 * 
+	 * Lie l'objet frog ï¿½ la partie
+	 *
 	 * @param frog
 	 */
 	public void setFrog(IFrog frog) {
@@ -54,7 +48,7 @@ public class Game {
 
 	/**
 	 * Lie l'objet environment a la partie
-	 * 
+	 *
 	 * @param environment
 	 */
 	public void setEnvironment(IEnvironment environment) {
@@ -62,7 +56,6 @@ public class Game {
 	}
 
 	/**
-	 * 
 	 * @return l'interface graphique
 	 */
 	public IFroggerGraphics getGraphic() {
@@ -70,9 +63,9 @@ public class Game {
 	}
 
 	/**
-	 * Teste si la partie est perdue et lance un écran de fin approprié si tel
+	 * Teste si la partie est perdue et lance un ï¿½cran de fin appropriï¿½ si tel
 	 * est le cas
-	 * 
+	 *
 	 * @return true si le partie est perdue
 	 */
 	public boolean testLose() {
@@ -81,13 +74,24 @@ public class Game {
 	}
 
 	/**
-	 * Teste si la partie est gagnee et lance un écran de fin approprié si tel
+	 * Teste si la partie est gagnee et lance un ï¿½cran de fin appropriï¿½ si tel
 	 * est le cas
-	 * 
-	 * @return true si la partie est gagnée
+	 *
+	 * @return true si la partie est gagnï¿½e
 	 */
 	public boolean testWin() {
 		// TODO
+
+		// Si la position de la grenouille est situÃ©e dans l'interval (0,19) et (25,19), cad sur la ligne horizontale du haut :
+		// alors la partie est gagnÃ©e.
+
+		System.out.println(frog.getPosition().absc + ", " + frog.getPosition().ord);
+		if(frog.getPosition().absc >= 0 && frog.getPosition().absc <= 25 &&
+				frog.getPosition().ord == 19){
+			graphic.endGameScreen("You win !");
+			return true;
+		}
+
 		return false;
 	}
 
