@@ -23,8 +23,8 @@ public class Car {
 
 	public Car(Game game, Case frontPosition, boolean leftToRight) {
 
-		//this.colorLtR = Color.BLACK;
-		//this.colorRtL = Color.BLUE;
+		this.colorLtR = Color.BLACK;
+		this.colorRtL = Color.BLUE;
 
 
 		this.game = game;
