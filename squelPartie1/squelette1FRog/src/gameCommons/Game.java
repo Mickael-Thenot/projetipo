@@ -11,15 +11,22 @@ public class Game {
 	public final Random randomGen = new Random();
 
 	// Caracteristique de la partie
-	public final int width;
-	public final int height;
+	//public final int width;
+	//public final int height;
+	public int width;
+	public int height;
+
 	public final int minSpeedInTimerLoops;
 	public final double defaultDensity;
+
 
 	// Lien aux objets utilis�s
 	private IEnvironment environment;
 	private IFrog frog;
 	private IFroggerGraphics graphic;
+
+    // On ajoute un score :
+	public int score;
 
 	/**
 	 * @param graphic             l'interface graphique
@@ -35,6 +42,9 @@ public class Game {
 		this.height = height;
 		this.minSpeedInTimerLoops = minSpeedInTimerLoop;
 		this.defaultDensity = defaultDensity;
+
+		this.score = 0;
+
 	}
 
 	/**
@@ -73,9 +83,8 @@ public class Game {
 
 		// Si à cette case la grenouille n'est pas en sécurité, cad qu'il percute une voiture,
 		// alors la partie est perdue.
-
 		if(!environment.isSafe(frog.getPosition())){
-			graphic.endGameScreen("You lose !");
+			graphic.endGameScreen("You Lose ! Score : " + getScore());
 			return true;
 		}
 
@@ -94,10 +103,19 @@ public class Game {
 		// Si la position de la grenouille est située dans l'interval (0,19) et (25,19), cad sur la ligne horizontale du haut :
 		// alors la partie est gagnée.
 
-		System.out.println(frog.getPosition().absc + ", " + frog.getPosition().ord);
-		if(frog.getPosition().absc >= 0 && frog.getPosition().absc <= 25 &&
-				frog.getPosition().ord == 19){
-			graphic.endGameScreen("You win !");
+		if(frog.getPosition().absc >= 0 && frog.getPosition().absc <= width &&
+				frog.getPosition().ord == height-1){
+			graphic.endGameScreen("You Win !");
+			return true;
+		}
+
+		return false;
+	}
+
+	public boolean testPartieInf(){
+
+		if(!environment.isSafe(frog.getPosition())){
+			graphic.endGameScreen("You Win ! Score : " + getScore());
 			return true;
 		}
 
@@ -112,8 +130,15 @@ public class Game {
 		graphic.clear();
 		environment.update();
 		this.graphic.add(new Element(frog.getPosition(), Color.GREEN));
-		testLose();
-		testWin();
+		//testLose();
+		//testWin();
+
+		// Ce que j'ai rajouté :
+		testPartieInf();
+	}
+
+	public int getScore(){
+		return score;
 	}
 
 }

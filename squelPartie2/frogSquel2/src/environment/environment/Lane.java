@@ -14,6 +14,9 @@ public class Lane {
 	private boolean leftToRight;
 	private double density;
 
+	private int tic;
+
+
 	// TODO : Constructeur(s)
 
 	public Lane(Game game, int ord, double density) {
@@ -52,6 +55,15 @@ public class Lane {
 		// A chaque tic d'horloge, une voiture peut �tre ajout�e
 
 
+		this.tic++;
+		if (tic <= this.speed) {
+			this.moveCars(false);
+		} else {
+			this.moveCars(true);
+			this.mayAddCar();
+			tic = 0;
+		}
+
 
 	}
 
@@ -89,7 +101,7 @@ public class Lane {
 
 	}
 
-	private boolean isSafe(Case firstCase) {
+	public boolean isSafe(Case firstCase) {
 		Iterator var3 = this.cars.iterator();
 
 		while(var3.hasNext()) {

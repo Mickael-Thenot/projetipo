@@ -12,21 +12,12 @@ public class Car {
 	private boolean leftToRight;
 	private int length;
 
-	//private final Color colorLtR = Color.BLACK;
-	// private final Color colorRtL = Color.BLUE;
-
-	private final Color colorLtR;
-	private final Color colorRtL;
-
+	private final Color colorLtR = Color.BLACK;
+	private final Color colorRtL = Color.RED;
 
 	//TODO Constructeur(s)
 
 	public Car(Game game, Case frontPosition, boolean leftToRight) {
-
-		this.colorLtR = Color.BLACK;
-		this.colorRtL = Color.BLUE;
-
-
 		this.game = game;
 		this.length = game.randomGen.nextInt(3) + 1;
 		this.leftToRight = leftToRight;
