@@ -28,7 +28,7 @@ public class EnvInf implements IEnvironment {
 
 
         this.riverLines = new ArrayList();
-        this.riverLines.add(new River(game, game.height/2, 0.0D));
+        this.riverLines.add(new River(game, game.height/2-1, 0.0D));
 
         for(int i = game.height/2; i < game.height - 1; ++i) {
             this.riverLines.add(new River(game, i));
@@ -59,6 +59,7 @@ public class EnvInf implements IEnvironment {
             lane.update();
             River river = (River)var3.next();
             river.update();
+
         }
     }
 

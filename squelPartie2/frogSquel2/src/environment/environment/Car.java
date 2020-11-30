@@ -56,7 +56,10 @@ public class Car {
 			game.getGraphic()
 					.add(new Element(leftPosition.absc + i, leftPosition.ord, color));
 		}
+
+
 	}
+
 
 
 

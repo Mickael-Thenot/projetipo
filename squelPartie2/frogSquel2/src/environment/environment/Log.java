@@ -41,6 +41,7 @@ public class Log {
         }
 
         this.addToGraphics();
+
     }
 
     public boolean coversCase(Case firstCase) {
@@ -52,7 +53,7 @@ public class Log {
     }
 
 
-    /* Fourni : addToGraphics() permettant d'ajouter un element graphique correspondant au rondin de bois*/
+    /* Fourni : addToGraphics() permettant d'ajouter un element graphique correspondant au rondin de bois */
     private void addToGraphics() {
         for (int i = 0; i < length; i++) {
             Color color = colorRtL;

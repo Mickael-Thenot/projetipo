@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import graphicalElements.Element;
 import util.Case;
 import gameCommons.Game;
 
@@ -32,10 +33,15 @@ public class River {
 
         this.colorRiver = Color.CYAN;
 
+        //this.addToGraphics();
         for(int i = 0; i < 4 * game.width; ++i) {
             this.moveLogs(true);
             this.mayAddLog();
         }
+
+        //game.getGraphic()
+          //          .add(new Element(10, 25, this.colorRiver));
+
 
     }
 
@@ -54,22 +60,19 @@ public class River {
         // d'horloge" �gal � leur vitesse
         // Notez que cette m�thode est appel�e � chaque tic d'horloge
 
-        // Les voitures doivent etre ajoutes a l interface graphique meme quand
+        // Les rondins de bois doivent etre ajoutes a l interface graphique meme quand
         // elle ne bougent pas
 
         // A chaque tic d'horloge, un rondin de bois peut �tre ajout�e
 
-
+        this.drawRiver();
         this.tic++;
-        if (tic <= this.speed) {
-            this.moveLogs(false);
-        } else {
+        //if (tic <= this.speed) {
             this.moveLogs(true);
             this.mayAddLog();
             tic = 0;
-        }
 
-
+        //}
     }
 
     // TODO : ajout de methodes
@@ -83,6 +86,7 @@ public class River {
         }
 
         this.removeOldLogs();
+
     }
 
     private void removeOldLogs() {
@@ -111,11 +115,12 @@ public class River {
 
         while(var3.hasNext()) {
             environment.Log log = (environment.Log)var3.next();
+
             if (log.coversCase(firstCase)) {
                 return false;
             }
         }
-
+        //this.addToGraphics();
         return true;
     }
 
@@ -128,11 +133,15 @@ public class River {
      * densit�, si la premi�re case de la voie est vide
      */
     private void mayAddLog() {
+
         if (isSafe(getFirstCase()) && isSafe(getBeforeFirstCase())) {
             if (game.randomGen.nextDouble() < density) {
                 logs.add(new environment.Log(game, getBeforeFirstCase(), leftToRight));
             }
         }
+
+
+
     }
 
 
@@ -151,4 +160,14 @@ public class River {
         } else
             return new Case(game.width, ord);
     }
+
+    private void drawRiver(){
+        for(int j = game.height/2; j < game.height; ++j) {
+            for(int i = 0; i < game.width; ++i) {
+                this.game.getGraphic().add(new Element(i, j, this.colorRiver));
+            }
+        }
+
+    }
+
 }

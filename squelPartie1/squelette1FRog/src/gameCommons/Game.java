@@ -131,7 +131,7 @@ public class Game {
 		environment.update();
 		this.graphic.add(new Element(frog.getPosition(), Color.GREEN));
 		//testLose();
-		//testWin();
+		testWin();
 
 		// Ce que j'ai rajouté :
 		testPartieInf();
