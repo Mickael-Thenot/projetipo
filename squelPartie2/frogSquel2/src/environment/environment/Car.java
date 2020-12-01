@@ -1,12 +1,17 @@
 package environment;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 
+import gameCommons.IFrog;
 import util.Case;
 import gameCommons.Game;
 import graphicalElements.Element;
 
-public class Car {
+import util.Direction;
+import frog.FrogInf;
+
+public class Car{
 	private Game game;
 	private Case leftPosition;
 	private boolean leftToRight;
@@ -14,6 +19,10 @@ public class Car {
 
 	private final Color colorLtR = Color.BLACK;
 	private final Color colorRtL = Color.RED;
+
+	//private IFrog frog;
+	//private Direction dir;
+	//private Case pos;
 
 	//TODO Constructeur(s)
 
@@ -28,11 +37,16 @@ public class Car {
 
 	public boolean appearsInBounds() {
 		return this.leftPosition.absc + this.length > 0 || this.leftPosition.absc < this.game.width;
+		//return (this.leftPosition.absc + this.length > 0 || this.leftPosition.absc < this.game.width);
 	}
 	public void move(boolean b) {
 		if (b) {
 			this.leftPosition = new Case(this.leftPosition.absc + (this.leftToRight ? 1 : -1), this.leftPosition.ord);
 		}
+		/*if(this.dir == Direction.up){{
+			this.leftPosition = new Case(this.leftPosition.absc, this.leftPosition.ord-1);
+
+		}*/
 
 		this.addToGraphics();
 	}
@@ -53,14 +67,31 @@ public class Car {
 			if (this.leftToRight){
 				color = colorLtR;
 			}
-			game.getGraphic()
-					.add(new Element(leftPosition.absc + i, leftPosition.ord, color));
+			if (game.getScore() %2 == 0){
+				game.getGraphic().add(new Element(leftPosition.absc + i, leftPosition.ord - game.getScore() , color));
+			}
+			if (game.getScore() %2 == 1 || game.getScore() %2 == -1){
+				game.getGraphic().add(new Element(leftPosition.absc + i, leftPosition.ord - game.getScore(), color));
+			}
+
 		}
+
 
 
 	}
 
+	/*@Override
+	public Case getPosition() {
+		return null;
+	}
 
+	@Override
+	public Direction getDirection() {
+		return null;
+	}
 
+	@Override
+	public void move(Direction key) {
 
+	}*/
 }

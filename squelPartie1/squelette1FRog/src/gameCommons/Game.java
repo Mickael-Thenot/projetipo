@@ -1,5 +1,4 @@
 package gameCommons;
-
 import java.awt.Color;
 import java.util.Random;
 
@@ -104,7 +103,7 @@ public class Game {
 		// alors la partie est gagnée.
 
 		if(frog.getPosition().absc >= 0 && frog.getPosition().absc <= width &&
-				frog.getPosition().ord == height-1){
+				frog.getPosition().ord == height/2-1){
 			graphic.endGameScreen("You Win !");
 			return true;
 		}
@@ -113,8 +112,8 @@ public class Game {
 	}
 
 	public boolean testPartieInf(){
-
-		if(!environment.isSafe(frog.getPosition())){
+		// Si la grenouille percute une voiture, alors la partie est finie et on a gagné.
+		if(!environment.isSafe(frog.getPosition()) || (frog.getPosition().ord == height-1)){
 			graphic.endGameScreen("You Win ! Score : " + getScore());
 			return true;
 		}
@@ -131,7 +130,7 @@ public class Game {
 		environment.update();
 		this.graphic.add(new Element(frog.getPosition(), Color.GREEN));
 		//testLose();
-		testWin();
+		//testWin();
 
 		// Ce que j'ai rajouté :
 		testPartieInf();

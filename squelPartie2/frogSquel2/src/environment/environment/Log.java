@@ -60,8 +60,12 @@ public class Log {
             if (this.leftToRight){
                 color = colorLtR;
             }
-            game.getGraphic()
-                    .add(new Element(leftPosition.absc + i, leftPosition.ord, color));
+            if (game.getScore() %2 == 0){
+                game.getGraphic().add(new Element(leftPosition.absc + i, leftPosition.ord - game.getScore() , color));
+            }
+            if (game.getScore() %2 == 1 || game.getScore() %2 == -1){
+                game.getGraphic().add(new Element(leftPosition.absc + i, leftPosition.ord - game.getScore(), color));
+            }
         }
     }
 

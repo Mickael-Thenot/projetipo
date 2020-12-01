@@ -18,7 +18,7 @@ public class River {
 
     private final Color colorRiver;
 
-    private int tic;
+    private int timer;
 
 
     // TODO : Constructeur(s)
@@ -38,11 +38,6 @@ public class River {
             this.moveLogs(true);
             this.mayAddLog();
         }
-
-        //game.getGraphic()
-          //          .add(new Element(10, 25, this.colorRiver));
-
-
     }
 
     public River(Game game, int ord) {
@@ -65,14 +60,16 @@ public class River {
 
         // A chaque tic d'horloge, un rondin de bois peut �tre ajout�e
 
-        this.drawRiver();
-        this.tic++;
-        //if (tic <= this.speed) {
+
+        //drawRiver();
+        this.timer++;
+        if (timer <= this.speed) {
+            this.moveLogs(false);
+        } else {
             this.moveLogs(true);
             this.mayAddLog();
-            tic = 0;
-
-        //}
+            timer = 0;
+        }
     }
 
     // TODO : ajout de methodes
