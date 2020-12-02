@@ -10,11 +10,8 @@ public class Game {
 	public final Random randomGen = new Random();
 
 	// Caracteristique de la partie
-	//public final int width;
-	//public final int height;
-	public int width;
-	public int height;
-
+	public final int width;
+	public final int height;
 	public final int minSpeedInTimerLoops;
 	public final double defaultDensity;
 
@@ -41,9 +38,7 @@ public class Game {
 		this.height = height;
 		this.minSpeedInTimerLoops = minSpeedInTimerLoop;
 		this.defaultDensity = defaultDensity;
-
 		this.score = 0;
-
 	}
 
 	/**
@@ -83,13 +78,21 @@ public class Game {
 		// Si à cette case la grenouille n'est pas en sécurité, cad qu'il percute une voiture,
 		// alors la partie est perdue.
 		if(!environment.isSafe(frog.getPosition())){
-			graphic.endGameScreen("You Lose ! Score : " + getScore());
+			graphic.endGameScreen("You Lose ! ");
 			return true;
 		}
 
 		return false;
 	}
 
+	/*public boolean testLose() {
+		if (environment.isSafe(frog.getPosition())) {
+			return false;
+		}
+		graphic.endGameScreen("You Lose ligne : " + frog.getPosition().ord + " Temps : " );
+		graphic.endGameScreen("");
+		return true;
+	}*/
 	/**
 	 * Teste si la partie est gagnee et lance un �cran de fin appropri� si tel
 	 * est le cas
@@ -103,7 +106,7 @@ public class Game {
 		// alors la partie est gagnée.
 
 		if(frog.getPosition().absc >= 0 && frog.getPosition().absc <= width &&
-				frog.getPosition().ord == height/2-1){
+				frog.getPosition().ord == height-1){
 			graphic.endGameScreen("You Win !");
 			return true;
 		}

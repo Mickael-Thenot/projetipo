@@ -31,15 +31,19 @@ public class Frog implements IFrog {
 	public void move(Direction key) {
 		if(key == Direction.up){
 			this.pos = new Case(this.pos.absc, this.pos.ord+1);
+			System.out.println("Position Grenouille : " + this.pos.absc + ", " + this.pos.ord);
 		}
 		if(key == Direction.down){
 			this.pos = new Case(this.pos.absc, this.pos.ord-1);
+			System.out.println("Position Grenouille : " + this.pos.absc + ", " + this.pos.ord);
 		}
 		if(key == Direction.right){
 			this.pos = new Case(this.pos.absc+1, this.pos.ord);
+			System.out.println("Position Grenouille : " + this.pos.absc + ", " + this.pos.ord);
 		}
 		if(key == Direction.left){
 			this.pos = new Case(this.pos.absc-1, this.pos.ord);
+			System.out.println("Position Grenouille : " + this.pos.absc + ", " + this.pos.ord);
 		}
 	}
 }

@@ -2,7 +2,7 @@ package util;
 
 public class Case {
 	public final int absc;
-	public int ord;
+	public final int ord;
 	//public int absc;
 	//public int ord;
 

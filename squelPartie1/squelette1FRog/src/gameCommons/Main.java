@@ -2,15 +2,18 @@ package gameCommons;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.Timer;
 
 import environment.EnvInf;
+import frog.FrogInf;
+
+//import environment.Environment;
+//import frog.Frog;
 
 import graphicalElements.FroggerGraphic;
 import graphicalElements.IFroggerGraphics;
 
-import frog.FrogInf;
+
 
 public class Main {
 

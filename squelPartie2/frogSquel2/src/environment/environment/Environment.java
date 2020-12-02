@@ -31,7 +31,6 @@ public class Environment implements IEnvironment {
     @Override
     public boolean isSafe(Case c) {
         return ((Lane)this.roadLines.get(c.ord)).isSafe(c);
-
     }
 
     @Override

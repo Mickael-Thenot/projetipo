@@ -54,7 +54,6 @@ public class Lane {
 
 		// A chaque tic d'horloge, une voiture peut �tre ajout�e
 
-
 		this.timer++;
 		if (timer <= this.speed) {
 			this.moveCars(false);
@@ -63,17 +62,15 @@ public class Lane {
 			this.mayAddCar();
 			timer = 0;
 		}
-
-
 	}
 
 	// TODO : ajout de methodes
 
 	private void moveCars(boolean b) {
-		Iterator var2 = this.cars.iterator();
+		Iterator var3 = this.cars.iterator();
 
-		while(var2.hasNext()) {
-			environment.Car car = (environment.Car)var2.next();
+		while(var3.hasNext()) {
+			environment.Car car = (environment.Car)var3.next();
 			car.move(b);
 		}
 
@@ -82,35 +79,33 @@ public class Lane {
 
 	private void removeOldCars() {
 		ArrayList<environment.Car> toBeRemoved = new ArrayList();
-		Iterator var2 = this.cars.iterator();
+		Iterator var3 = this.cars.iterator();
 
 		environment.Car c;
-		while(var2.hasNext()) {
-			c = (environment.Car)var2.next();
+		while(var3.hasNext()) {
+			c = (environment.Car)var3.next();
 			if (!c.appearsInBounds()) {
 				toBeRemoved.add(c);
 			}
 		}
 
-		var2 = toBeRemoved.iterator();
+		var3 = toBeRemoved.iterator();
 
-		while(var2.hasNext()) {
-			c = (environment.Car)var2.next();
+		while(var3.hasNext()) {
+			c = (environment.Car)var3.next();
 			this.cars.remove(c);
 		}
-
 	}
 
 	public boolean isSafe(Case firstCase) {
-		Iterator var2 = this.cars.iterator();
+		Iterator var3 = this.cars.iterator();
 
-		while(var2.hasNext()) {
-			environment.Car car = (environment.Car)var2.next();
+		while(var3.hasNext()) {
+			environment.Car car = (environment.Car)var3.next();
 			if (car.coversCase(firstCase)) {
 				return false;
 			}
 		}
-
 		return true;
 	}
 
@@ -130,9 +125,6 @@ public class Lane {
 		}
 	}
 
-
-
-
 	private Case getFirstCase() {
 		if (leftToRight) {
 			return new Case(0, ord);
@@ -146,5 +138,4 @@ public class Lane {
 		} else
 			return new Case(game.width, ord);
 	}
-
 }

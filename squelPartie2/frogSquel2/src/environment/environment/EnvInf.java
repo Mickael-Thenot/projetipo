@@ -24,13 +24,13 @@ public class EnvInf implements IEnvironment {
         this.roadLines = new ArrayList();
         this.roadLines.add(new Lane(game, 0, 0.0D));
 
-        for(int i = 2; i < game.height/2-1; ++i) {
+        for(int i = 1; i < game.height-1; ++i) {
             this.roadLines.add(new Lane(game, i));
         }
-        this.roadLines.add(new Lane(game, 2*game.height-1, 0.0D));
+        this.roadLines.add(new Lane(game, game.height-1, 0.0D));
 
 
-        this.riverLines = new ArrayList();
+        /*this.riverLines = new ArrayList();
         this.riverLines.add(new River(game, game.height/2-1, 0.0D));
 
         for(int i = game.height/2; i < game.height - 1; ++i) {
@@ -44,7 +44,7 @@ public class EnvInf implements IEnvironment {
         for(int i = game.height/2+1; i < game.height - 1; ++i) {
             this.riverLines.add(new River(game, i));
         }
-        this.riverLines.add(new River(game, game.height - 1, 0.0D));
+        this.riverLines.add(new River(game, game.height - 1, 0.0D));*/
 
     }
 
@@ -64,14 +64,14 @@ public class EnvInf implements IEnvironment {
     @Override
     public void update() {
         Iterator var2 = this.roadLines.iterator();
-        Iterator var3 = this.riverLines.iterator();
+        //Iterator var3 = this.riverLines.iterator();
 
 
         while(var2.hasNext()) {
             Lane lane = (Lane)var2.next();
             lane.update();
-            River river = (River) var3.next();
-            river.update();
+            //River river = (River) var3.next();
+            //river.update();
 
         }
     }

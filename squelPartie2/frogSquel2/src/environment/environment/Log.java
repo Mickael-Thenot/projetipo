@@ -13,17 +13,13 @@ public class Log {
     private boolean leftToRight;
     private int length;
 
-    private final Color colorLtR;
-    private final Color colorRtL;
+    private final Color colorLtR = Color.ORANGE;
+    private final Color colorRtL = Color.YELLOW;
 
 
     //TODO Constructeur(s)
 
     public Log(Game game, Case frontPosition, boolean leftToRight) {
-
-        this.colorLtR = Color.ORANGE;
-        this.colorRtL = Color.YELLOW;
-
         this.game = game;
         this.length = game.randomGen.nextInt(3) + 1;
         this.leftToRight = leftToRight;
@@ -39,9 +35,7 @@ public class Log {
         if (b) {
             this.leftPosition = new Case(this.leftPosition.absc + (this.leftToRight ? 1 : -1), this.leftPosition.ord);
         }
-
         this.addToGraphics();
-
     }
 
     public boolean coversCase(Case firstCase) {
@@ -55,16 +49,12 @@ public class Log {
 
     /* Fourni : addToGraphics() permettant d'ajouter un element graphique correspondant au rondin de bois */
     private void addToGraphics() {
-        for (int i = 0; i < length; i++) {
-            Color color = colorRtL;
-            if (this.leftToRight){
-                color = colorLtR;
-            }
+        for(int i = 0; i < this.length; ++i) {
             if (game.getScore() %2 == 0){
-                game.getGraphic().add(new Element(leftPosition.absc + i, leftPosition.ord - game.getScore() , color));
+                this.game.getGraphic().add(new Element(this.leftPosition.absc + i, this.leftPosition.ord - game.getScore(), this.leftToRight ? this.colorLtR : this.colorRtL));
             }
             if (game.getScore() %2 == 1 || game.getScore() %2 == -1){
-                game.getGraphic().add(new Element(leftPosition.absc + i, leftPosition.ord - game.getScore(), color));
+                this.game.getGraphic().add(new Element(this.leftPosition.absc + i, this.leftPosition.ord - game.getScore(), this.leftToRight ? this.colorLtR : this.colorRtL));
             }
         }
     }

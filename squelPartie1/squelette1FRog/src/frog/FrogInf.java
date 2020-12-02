@@ -12,12 +12,12 @@ import java.awt.*;
 public class FrogInf implements IFrog{
     private Game game;
     private Direction dir;
-    private Case pos;
+    public Case pos;
 
     public FrogInf (Game game){
         this.game = game;
         this.dir = Direction.up;
-        this.pos = new Case(game.width/2, 1);
+        this.pos = new Case(game.width/2, 0);
     }
 
     @Override
@@ -34,14 +34,13 @@ public class FrogInf implements IFrog{
     public void move(Direction key) {
 
         if(key == Direction.up){
-            //this.pos.ord = this.pos.ord+1;
-
+            //this.pos = new Case(this.pos.absc, this.pos.ord+1);
             this.game.score++;
             System.out.println("Position de la grenouille par rapport à l'écran : " + getPosition().absc + ", " + getPosition().ord);
             System.out.println("Score : " + game.getScore());
         }
         if(key == Direction.down){
-            //this.pos.ord = this.pos.ord-1;
+            //this.pos = new Case(this.pos.absc, this.pos.ord-1);
             this.game.score--;
             System.out.println("Position de la grenouille par rapport à l'écran : " + getPosition().absc + ", " + getPosition().ord);
             System.out.println("Score : " + game.getScore());

@@ -32,8 +32,7 @@ public class River {
         this.density = density;
 
         this.colorRiver = Color.CYAN;
-
-        //this.addToGraphics();
+        //drawRiver();
         for(int i = 0; i < 4 * game.width; ++i) {
             this.moveLogs(true);
             this.mayAddLog();
@@ -43,9 +42,6 @@ public class River {
     public River(Game game, int ord) {
         this(game, ord, game.defaultDensity);
     }
-
-
-
 
     public void update() {
 
@@ -81,9 +77,7 @@ public class River {
             environment.Log log = (environment.Log)var3.next();
             log.move(b);
         }
-
         this.removeOldLogs();
-
     }
 
     private void removeOldLogs() {
@@ -112,12 +106,10 @@ public class River {
 
         while(var3.hasNext()) {
             environment.Log log = (environment.Log)var3.next();
-
             if (log.coversCase(firstCase)) {
                 return false;
             }
         }
-        //this.addToGraphics();
         return true;
     }
 
@@ -137,12 +129,7 @@ public class River {
             }
         }
 
-
-
     }
-
-
-
 
     private Case getFirstCase() {
         if (leftToRight) {

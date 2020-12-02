@@ -1,15 +1,12 @@
 package environment;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 
-import gameCommons.IFrog;
+import frog.FrogInf;
 import util.Case;
 import gameCommons.Game;
 import graphicalElements.Element;
-
 import util.Direction;
-import frog.FrogInf;
 
 public class Car{
 	private Game game;
@@ -20,7 +17,7 @@ public class Car{
 	private final Color colorLtR = Color.BLACK;
 	private final Color colorRtL = Color.RED;
 
-	//private IFrog frog;
+	private FrogInf frog;
 	//private Direction dir;
 	//private Case pos;
 
@@ -37,17 +34,12 @@ public class Car{
 
 	public boolean appearsInBounds() {
 		return this.leftPosition.absc + this.length > 0 || this.leftPosition.absc < this.game.width;
-		//return (this.leftPosition.absc + this.length > 0 || this.leftPosition.absc < this.game.width);
 	}
+
 	public void move(boolean b) {
 		if (b) {
 			this.leftPosition = new Case(this.leftPosition.absc + (this.leftToRight ? 1 : -1), this.leftPosition.ord);
 		}
-		/*if(this.dir == Direction.up){{
-			this.leftPosition = new Case(this.leftPosition.absc, this.leftPosition.ord-1);
-
-		}*/
-
 		this.addToGraphics();
 	}
 
@@ -61,37 +53,16 @@ public class Car{
 
 	
 	/* Fourni : addToGraphics() permettant d'ajouter un element graphique correspondant a la voiture*/
+
 	private void addToGraphics() {
-		for (int i = 0; i < length; i++) {
-			Color color = colorRtL;
-			if (this.leftToRight){
-				color = colorLtR;
-			}
+		for(int i = 0; i < this.length; ++i) {
 			if (game.getScore() %2 == 0){
-				game.getGraphic().add(new Element(leftPosition.absc + i, leftPosition.ord - game.getScore() , color));
+				this.game.getGraphic().add(new Element(this.leftPosition.absc + i, this.leftPosition.ord - game.getScore(), this.leftToRight ? this.colorLtR : this.colorRtL));
 			}
 			if (game.getScore() %2 == 1 || game.getScore() %2 == -1){
-				game.getGraphic().add(new Element(leftPosition.absc + i, leftPosition.ord - game.getScore(), color));
+				this.game.getGraphic().add(new Element(this.leftPosition.absc + i, this.leftPosition.ord - game.getScore(), this.leftToRight ? this.colorLtR : this.colorRtL));
 			}
-
 		}
-
-
-
 	}
 
-	/*@Override
-	public Case getPosition() {
-		return null;
-	}
-
-	@Override
-	public Direction getDirection() {
-		return null;
-	}
-
-	@Override
-	public void move(Direction key) {
-
-	}*/
 }
