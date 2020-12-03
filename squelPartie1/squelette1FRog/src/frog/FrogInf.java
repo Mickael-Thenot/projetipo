@@ -17,6 +17,8 @@ public class FrogInf implements IFrog{
     public FrogInf (Game game){
         this.game = game;
         this.dir = Direction.up;
+        // On le démarre à 1 mais pas à 0 pour assurer les collisions entre les voitures,
+        // Et on veut aussi voir ce qu'il y a derrière la grenouille.
         this.pos = new Case(game.width/2, 0);
     }
 
@@ -34,13 +36,14 @@ public class FrogInf implements IFrog{
     public void move(Direction key) {
 
         if(key == Direction.up){
-            //this.pos = new Case(this.pos.absc, this.pos.ord+1);
+            this.pos = new Case(this.pos.absc, this.pos.ord+1);
             this.game.score++;
             System.out.println("Position de la grenouille par rapport à l'écran : " + getPosition().absc + ", " + getPosition().ord);
             System.out.println("Score : " + game.getScore());
         }
+
         if(key == Direction.down){
-            //this.pos = new Case(this.pos.absc, this.pos.ord-1);
+            this.pos = new Case(this.pos.absc, this.pos.ord-1);
             this.game.score--;
             System.out.println("Position de la grenouille par rapport à l'écran : " + getPosition().absc + ", " + getPosition().ord);
             System.out.println("Score : " + game.getScore());
@@ -48,10 +51,12 @@ public class FrogInf implements IFrog{
         if(key == Direction.right){
             this.pos = new Case(this.pos.absc+1, this.pos.ord);
             System.out.println("Position de la grenouille par rapport à l'écran : " + getPosition().absc + ", " + getPosition().ord);
+            System.out.println("Score : " + game.getScore());
         }
         if(key == Direction.left){
             this.pos = new Case(this.pos.absc-1, this.pos.ord);
             System.out.println("Position de la grenouille par rapport à l'écran : " + getPosition().absc + ", " + getPosition().ord);
+            System.out.println("Score : " + game.getScore());
         }
     }
 

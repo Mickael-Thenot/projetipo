@@ -17,5 +17,6 @@ public class Element extends Case {
         super(c.absc, c.ord);
         this.color = color;
     }
-    
+
+
 }

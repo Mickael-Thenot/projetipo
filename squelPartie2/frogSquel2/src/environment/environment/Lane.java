@@ -138,4 +138,9 @@ public class Lane {
 		} else
 			return new Case(game.width, ord);
 	}
+
+	public String toString() {
+		return "Lane [ord=" + this.ord + ", cars=" + this.cars + "]";
+	}
+
 }

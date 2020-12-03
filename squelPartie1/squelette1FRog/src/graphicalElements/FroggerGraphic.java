@@ -2,6 +2,8 @@ package graphicalElements;
 
 import javax.swing.*;
 
+import gameCommons.CompteARebours;
+import gameCommons.Game;
 import gameCommons.IFrog;
 import util.Direction;
 
@@ -18,6 +20,9 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 	private IFrog frog;
 	private JFrame frame;
 
+	// Ce que j'ai rajouté :
+	private CompteARebours compteARebours;
+
 	public FroggerGraphic(int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -33,6 +38,9 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 		frame.pack();
 		frame.setVisible(true);
 		frame.addKeyListener(this);
+
+		// Ce que j'ai rajouté :
+		compteARebours = new CompteARebours();
 	}
 
 	public void paintComponent(Graphics g) {
@@ -41,6 +49,14 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 			g.setColor(e.color);
 			g.fillRect(pixelByCase * e.absc, pixelByCase * (height - 1 - e.ord), pixelByCase, pixelByCase - 1);
 		}
+		// On veut afficher le compte à rebours :
+		g.setColor(Color.WHITE);
+		g.drawString(this.compteARebours.getStr(),5,10);
+
+		// On veut afficher le score de la grenouille pendant la partie :
+		g.setColor(Color.YELLOW);
+		g.drawString("Score : ",300,10);
+
 	}
 
 	public void keyTyped(KeyEvent e) {
@@ -85,7 +101,6 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 		label.setSize(this.getSize());
 		frame.getContentPane().add(label);
 		frame.repaint();
-
 	}
 
 }

@@ -7,12 +7,8 @@ import javax.swing.Timer;
 import environment.EnvInf;
 import frog.FrogInf;
 
-//import environment.Environment;
-//import frog.Frog;
-
 import graphicalElements.FroggerGraphic;
 import graphicalElements.IFroggerGraphics;
-
 
 
 public class Main {

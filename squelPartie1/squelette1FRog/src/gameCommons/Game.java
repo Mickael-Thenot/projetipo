@@ -1,5 +1,5 @@
 package gameCommons;
-import java.awt.Color;
+import java.awt.*;
 import java.util.Random;
 
 import graphicalElements.Element;
@@ -24,6 +24,8 @@ public class Game {
     // On ajoute un score :
 	public int score;
 
+	private CompteARebours compteARebours;
+
 	/**
 	 * @param graphic             l'interface graphique
 	 * @param width               largeur en cases
@@ -39,6 +41,9 @@ public class Game {
 		this.minSpeedInTimerLoops = minSpeedInTimerLoop;
 		this.defaultDensity = defaultDensity;
 		this.score = 0;
+
+		compteARebours = new CompteARebours();
+
 	}
 
 	/**
@@ -102,7 +107,7 @@ public class Game {
 	public boolean testWin() {
 		// TODO
 
-		// Si la position de la grenouille est située dans l'interval (0,19) et (25,19), cad sur la ligne horizontale du haut :
+		// Si la position de la grenouille est située à la ligne horizontale du haut, cad height-1:
 		// alors la partie est gagnée.
 
 		if(frog.getPosition().absc >= 0 && frog.getPosition().absc <= width &&
@@ -115,12 +120,11 @@ public class Game {
 	}
 
 	public boolean testPartieInf(){
-		// Si la grenouille percute une voiture, alors la partie est finie et on a gagné.
-		if(!environment.isSafe(frog.getPosition()) || (frog.getPosition().ord == height-1)){
+		// Si la grenouille percute une voiture et si le temps est écoulé, alors la partie est finie et on a gagné.
+		if(!environment.isSafe(frog.getPosition()) || this.compteARebours.getCompteurTemps() == 0 ){
 			graphic.endGameScreen("You Win ! Score : " + getScore());
 			return true;
 		}
-
 		return false;
 	}
 
@@ -136,6 +140,8 @@ public class Game {
 		//testWin();
 
 		// Ce que j'ai rajouté :
+		//g2.drawString(this.compteARebours.getStr(),5,25);
+
 		testPartieInf();
 	}
 
