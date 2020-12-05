@@ -7,6 +7,7 @@ import javax.swing.Timer;
 import environment.EnvInf;
 import frog.FrogInf;
 
+import graphicalElements.Element;
 import graphicalElements.FroggerGraphic;
 import graphicalElements.IFroggerGraphics;
 
@@ -36,8 +37,10 @@ public class Main {
 		//IEnvironment env = new Environment(game);
 		IEnvironment env = new EnvInf(game);
 		game.setEnvironment(env);
-				
-		//Boucle principale : l'environnement s'acturalise tous les tempo milisecondes
+		game.playSoundCars();
+		game.playSoundRiver();
+
+		//Boucle principale : l'environnement s'actualise tous les tempo milisecondes
 		Timer timer = new Timer(tempo, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

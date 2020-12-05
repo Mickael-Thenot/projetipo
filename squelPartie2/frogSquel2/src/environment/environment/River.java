@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import graphicalElements.Element;
+import graphicalElements.FroggerGraphic;
 import util.Case;
 import gameCommons.Game;
 
@@ -20,6 +21,7 @@ public class River {
 
     private int timer;
 
+    public ArrayList<River> riverLines;
 
     // TODO : Constructeur(s)
 
@@ -32,7 +34,7 @@ public class River {
         this.density = density;
 
         this.colorRiver = Color.CYAN;
-        //drawRiver();
+
         for(int i = 0; i < 4 * game.width; ++i) {
             this.moveLogs(true);
             this.mayAddLog();
@@ -60,12 +62,15 @@ public class River {
         //drawRiver();
         this.timer++;
         if (timer <= this.speed) {
+            //drawRiver();
             this.moveLogs(false);
         } else {
+            drawRiver();
             this.moveLogs(true);
             this.mayAddLog();
             timer = 0;
         }
+
     }
 
     // TODO : ajout de methodes
@@ -145,13 +150,12 @@ public class River {
             return new Case(game.width, ord);
     }
 
-    private void drawRiver(){
+    public void drawRiver(){
         for(int j = game.height/2; j < game.height; ++j) {
             for(int i = 0; i < game.width; ++i) {
                 this.game.getGraphic().add(new Element(i, j, this.colorRiver));
             }
         }
-
     }
 
 }

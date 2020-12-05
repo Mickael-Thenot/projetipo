@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import frog.FrogInf;
+import gameCommons.Audio;
 import gameCommons.CompteARebours;
 import graphicalElements.Element;
 import util.Case;
@@ -13,13 +14,15 @@ import gameCommons.IEnvironment;
 import util.Direction;
 
 import javax.swing.*;
+import graphicalElements.FroggerGraphic;
 
 public class EnvInf implements IEnvironment {
 
     public ArrayList<Lane> roadLines;
     public ArrayList<River> riverLines;
     private Game game;
-    private FrogInf frog;
+    //private FrogInf frog;
+    //private River river;
 
     public EnvInf(Game game) {
 
@@ -31,7 +34,7 @@ public class EnvInf implements IEnvironment {
         for(int i = 2; i < game.height/2-1; ++i) {
             this.roadLines.add(new Lane(game, i));
         }
-        this.roadLines.add(new Lane(game, 2*game.height/2-1, 0.0D));
+        this.roadLines.add(new Lane(game, game.height/2-1, 0.0D));
 
 
         this.riverLines = new ArrayList();
@@ -40,8 +43,8 @@ public class EnvInf implements IEnvironment {
             this.riverLines.add(new River(game, i));
         }
         this.riverLines.add(new River(game, game.height - 1, 0.0D));
-
     }
+
 
     @Override
     public boolean isSafe(Case c) {
@@ -58,14 +61,12 @@ public class EnvInf implements IEnvironment {
     public void update() {
         Iterator var2 = this.roadLines.iterator();
         Iterator var3 = this.riverLines.iterator();
-
-
+        //this.river.drawRiver();
         while(var2.hasNext()) {
             Lane lane = (Lane)var2.next();
             lane.update();
             River river = (River) var3.next();
             river.update();
-
         }
     }
 

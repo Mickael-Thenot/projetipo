@@ -2,6 +2,7 @@ package graphicalElements;
 
 import javax.swing.*;
 
+import gameCommons.Chrono;
 import gameCommons.CompteARebours;
 import gameCommons.Game;
 import gameCommons.IFrog;
@@ -22,6 +23,7 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 
 	// Ce que j'ai rajouté :
 	private CompteARebours compteARebours;
+	private Chrono chrono;
 
 	public FroggerGraphic(int width, int height) {
 		this.width = width;
@@ -41,6 +43,8 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 
 		// Ce que j'ai rajouté :
 		compteARebours = new CompteARebours();
+		chrono = new Chrono();
+
 	}
 
 	public void paintComponent(Graphics g) {
@@ -52,6 +56,10 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 		// On veut afficher le compte à rebours :
 		g.setColor(Color.WHITE);
 		g.drawString(this.compteARebours.getStr(),5,10);
+
+		// On veut afficher le chrono :
+		g.setColor(Color.PINK);
+		g.drawString(this.chrono.getStr(),150,10);
 
 		// On veut afficher le score de la grenouille pendant la partie :
 		g.setColor(Color.YELLOW);

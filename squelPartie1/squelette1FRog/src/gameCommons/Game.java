@@ -4,6 +4,7 @@ import java.util.Random;
 
 import graphicalElements.Element;
 import graphicalElements.IFroggerGraphics;
+import util.Case;
 
 public class Game {
 
@@ -20,11 +21,13 @@ public class Game {
 	private IEnvironment environment;
 	private IFrog frog;
 	private IFroggerGraphics graphic;
+	private int pos;
 
     // On ajoute un score :
 	public int score;
 
 	private CompteARebours compteARebours;
+	private Chrono chrono;
 
 	/**
 	 * @param graphic             l'interface graphique
@@ -43,6 +46,7 @@ public class Game {
 		this.score = 0;
 
 		compteARebours = new CompteARebours();
+		chrono = new Chrono();
 
 	}
 
@@ -122,7 +126,7 @@ public class Game {
 	public boolean testPartieInf(){
 		// Si la grenouille percute une voiture et si le temps est écoulé, alors la partie est finie et on a gagné.
 		if(!environment.isSafe(frog.getPosition()) || this.compteARebours.getCompteurTemps() == 0 ){
-			graphic.endGameScreen("You Win ! Score : " + getScore());
+			graphic.endGameScreen("You Win ! Score : " + getScore() + "    " + this.chrono.getStr());
 			return true;
 		}
 		return false;
@@ -140,13 +144,25 @@ public class Game {
 		//testWin();
 
 		// Ce que j'ai rajouté :
-		//g2.drawString(this.compteARebours.getStr(),5,25);
-
 		testPartieInf();
 	}
 
 	public int getScore(){
 		return score;
+	}
+
+	// Ici on ajoute un bruitage de voitures qui passent.
+	public void playSoundCars(){
+		//if (frog.getPosition().ord >= 0 && frog.getPosition().ord <= height/2-1){
+			Audio.playSound("/audio/voituresPassages.wav");
+		//}
+	}
+
+	// Ici on ajoute un bruitage de rivière qui coule.
+	public void playSoundRiver(){
+		//if (frog.getPosition().ord >= height-1){
+			//Audio.playSound("/audio/sonRuisseau.wav");
+		//}
 	}
 
 }
