@@ -52,9 +52,18 @@ public class Log {
         for(int i = 0; i < this.length; ++i) {
             if (game.getScore() %2 == 0 || game.getScore() %2 == 1 || game.getScore() %2 == -1){
                 this.game.getGraphic().add(new Element(this.leftPosition.absc + i, this.leftPosition.ord, this.leftToRight ? this.colorLtR : this.colorRtL));
+                //this.game.getGraphic().add(new Element());
+                //drawRiver();
             }
         }
     }
 
+    /*public void drawRiver(){
+        for(int j = game.height/2; j < game.height; ++j) {
+            for(int i = 0; i < game.width; ++i) {
+                this.game.getGraphic().add(new Element(i, j, Color.CYAN));
+            }
+        }
+    }*/
 
 }

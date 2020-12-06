@@ -2,12 +2,14 @@ package environment;
 
 import java.awt.Color;
 
+import frog.FrogInf;
 import util.Case;
 import gameCommons.Game;
 import graphicalElements.Element;
 
 public class Car{
 	private Game game;
+	private FrogInf frog;
 	private Case leftPosition;
 	private boolean leftToRight;
 	private int length;
@@ -49,9 +51,9 @@ public class Car{
 
 	private void addToGraphics() {
 		for(int i = 0; i < this.length; ++i) {
-			if (game.getScore() %2 == 0 || game.getScore() %2 == 1 || game.getScore() %2 == -1){
+			//if (game.getScore() %2 == 0 || game.getScore() %2 == 1 || game.getScore() %2 == -1){
 				this.game.getGraphic().add(new Element(this.leftPosition.absc + i, this.leftPosition.ord, this.leftToRight ? this.colorLtR : this.colorRtL));
-			}
+			//}
 		}
 	}
 

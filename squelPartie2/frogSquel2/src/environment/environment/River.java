@@ -59,10 +59,8 @@ public class River {
         // A chaque tic d'horloge, un rondin de bois peut �tre ajout�e
 
 
-        //drawRiver();
         this.timer++;
         if (timer <= this.speed) {
-            //drawRiver();
             this.moveLogs(false);
         } else {
             drawRiver();

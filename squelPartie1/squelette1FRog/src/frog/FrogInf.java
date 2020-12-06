@@ -42,6 +42,7 @@ public class FrogInf implements IFrog{
 
         if(key == Direction.up){
             this.pos = new Case(this.pos.absc, this.pos.ord+1);
+            //this.pos.ord = this.pos.ord+1;
             this.game.score++;
             System.out.println("Position de la grenouille par rapport à l'écran : " + getPosition().absc + ", " + getPosition().ord);
             System.out.println("Score : " + game.getScore());

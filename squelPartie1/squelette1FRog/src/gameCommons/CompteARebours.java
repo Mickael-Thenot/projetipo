@@ -9,8 +9,8 @@ public class CompteARebours implements Runnable {
 
     // CONSTRUCTEUR
     public CompteARebours(){
-        this.compteurTemps = 30;
-        this.str = "Temps restant : 30";
+        this.compteurTemps = 50;
+        this.str = "Temps restant : 50";
 
         Thread compteARebours = new Thread(this);
         compteARebours.start();
