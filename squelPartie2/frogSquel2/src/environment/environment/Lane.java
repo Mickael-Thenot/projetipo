@@ -3,7 +3,6 @@ package environment;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import frog.Frog;
 import util.Case;
 import gameCommons.Game;
 
@@ -14,8 +13,6 @@ public class Lane {
 	private ArrayList<environment.Car> cars = new ArrayList<>();
 	private boolean leftToRight;
 	private double density;
-
-	private Frog frog;
 
 	private int timer;
 

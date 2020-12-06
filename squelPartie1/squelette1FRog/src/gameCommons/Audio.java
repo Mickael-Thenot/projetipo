@@ -9,8 +9,6 @@ import javax.sound.sampled.Clip;
 public class Audio {
     // VARIABLES
     private Clip clip;
-    private FrogInf frog;
-    private Game game;
 
     // CONSTRUCTEUR
     public Audio(String son){

@@ -86,6 +86,7 @@ public class Game {
 
 		// Si à cette case la grenouille n'est pas en sécurité, cad qu'il percute une voiture,
 		// alors la partie est perdue.
+
 		if(!environment.isSafe(frog.getPosition())){
 			graphic.endGameScreen("You Lose ! ");
 			return true;
@@ -94,14 +95,6 @@ public class Game {
 		return false;
 	}
 
-	/*public boolean testLose() {
-		if (environment.isSafe(frog.getPosition())) {
-			return false;
-		}
-		graphic.endGameScreen("You Lose ligne : " + frog.getPosition().ord + " Temps : " );
-		graphic.endGameScreen("");
-		return true;
-	}*/
 	/**
 	 * Teste si la partie est gagnee et lance un �cran de fin appropri� si tel
 	 * est le cas

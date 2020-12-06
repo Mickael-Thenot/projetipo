@@ -2,15 +2,15 @@ package gameCommons;
 
 public class CompteARebours implements Runnable {
 
-    // VARIABBLES
+    // VARIABLES
     private final int PAUSE = 1000; // le temps de pause entre 2 affichages en 1000 ms, donc 1 seconde.
     private int compteurTemps;
     private String str;
 
     // CONSTRUCTEUR
     public CompteARebours(){
-        this.compteurTemps = 50;
-        this.str = "Temps restant : 50";
+        this.compteurTemps = 30;
+        this.str = "Temps restant : 30";
 
         Thread compteARebours = new Thread(this);
         compteARebours.start();

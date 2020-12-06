@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import graphicalElements.Element;
-import graphicalElements.FroggerGraphic;
 import util.Case;
 import gameCommons.Game;
 
@@ -149,7 +148,7 @@ public class River {
     }
 
     public void drawRiver(){
-        for(int j = game.height/2; j < game.height; ++j) {
+        for(int j = game.height/2; j < 2*game.height; ++j) {
             for(int i = 0; i < game.width; ++i) {
                 this.game.getGraphic().add(new Element(i, j, this.colorRiver));
             }

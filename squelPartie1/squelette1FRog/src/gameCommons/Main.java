@@ -37,8 +37,10 @@ public class Main {
 		//IEnvironment env = new Environment(game);
 		IEnvironment env = new EnvInf(game);
 		game.setEnvironment(env);
+
+		// Ici on met un bruitage de voitures qui roulent.
 		game.playSoundCars();
-		game.playSoundRiver();
+		//game.playSoundRiver();
 
 		//Boucle principale : l'environnement s'actualise tous les tempo milisecondes
 		Timer timer = new Timer(tempo, new ActionListener() {

@@ -2,12 +2,8 @@ package frog;
 
 import gameCommons.Game;
 import gameCommons.IFrog;
-
-import graphicalElements.Element;
 import util.Case;
 import util.Direction;
-
-import java.awt.*;
 
 public class FrogInf implements IFrog{
     private Game game;
@@ -33,30 +29,15 @@ public class FrogInf implements IFrog{
     @Override
     public void move(Direction key) {
 
-        /*if(key == Direction.up && this.pos.ord <= 1){
-            this.pos = new Case(this.pos.absc, this.pos.ord+1);
-            this.game.score++;
-            System.out.println("Position de la grenouille par rapport à l'écran : " + getPosition().absc + ", " + getPosition().ord);
-            System.out.println("Score : " + game.getScore());
-        }*/
-
         if(key == Direction.up){
-            this.pos = new Case(this.pos.absc, this.pos.ord+1);
-            //this.pos.ord = this.pos.ord+1;
+            //this.pos = new Case(this.pos.absc, this.pos.ord+1);
             this.game.score++;
             System.out.println("Position de la grenouille par rapport à l'écran : " + getPosition().absc + ", " + getPosition().ord);
             System.out.println("Score : " + game.getScore());
         }
 
-        /*if(key == Direction.down && this.pos.ord <= 1){
-            this.pos = new Case(this.pos.absc, this.pos.ord-1);
-            this.game.score--;
-            System.out.println("Position de la grenouille par rapport à l'écran : " + getPosition().absc + ", " + getPosition().ord);
-            System.out.println("Score : " + game.getScore());
-        }*/
-
         if(key == Direction.down){
-            this.pos = new Case(this.pos.absc, this.pos.ord-1);
+            //this.pos = new Case(this.pos.absc, this.pos.ord-1);
             this.game.score--;
             System.out.println("Position de la grenouille par rapport à l'écran : " + getPosition().absc + ", " + getPosition().ord);
             System.out.println("Score : " + game.getScore());
@@ -73,9 +54,5 @@ public class FrogInf implements IFrog{
             System.out.println("Score : " + game.getScore());
         }
     }
-
-
-
-
 
 }

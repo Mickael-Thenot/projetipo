@@ -51,7 +51,7 @@ public class Log {
     private void addToGraphics() {
         for(int i = 0; i < this.length; ++i) {
             if (game.getScore() %2 == 0 || game.getScore() %2 == 1 || game.getScore() %2 == -1){
-                this.game.getGraphic().add(new Element(this.leftPosition.absc + i, this.leftPosition.ord, this.leftToRight ? this.colorLtR : this.colorRtL));
+                this.game.getGraphic().add(new Element(this.leftPosition.absc + i, this.leftPosition.ord - game.getScore(), this.leftToRight ? this.colorLtR : this.colorRtL));
                 //this.game.getGraphic().add(new Element());
                 //drawRiver();
             }
